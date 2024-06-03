@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
+    [SerializeField] private bool ShowRayCast;
     void Start()
     {
         
@@ -61,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
+        if (ShowRayCast)
+        {
+            Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
+        }
     }
 }
